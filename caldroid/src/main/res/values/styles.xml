@@ -67,7 +67,7 @@
     <style name="CaldroidDefaultSquareCell" parent="CaldroidDefaultCell" />
 
     <style name="CaldroidDefaultWeekday">
-        <item name="android:textColor">@color/caldroid_middle_gray</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingTop">6dp</item>
@@ -96,7 +96,7 @@
     </style>
 
     <style name="CaldroidDefaultDarkCell" parent="CaldroidDefaultCell">
-        <item name="android:textColor">@color/cell_text_color_dark</item>
+        <item name="android:textColor">@color/cell_text_color</item>
         <item name="android:background">@drawable/cell_bg_dark</item>
     </style>
 

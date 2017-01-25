@@ -45,6 +45,7 @@ public class WeekdayArrayAdapter extends ArrayAdapter<String> {
         // Set content
         String item = getItem(position);
         textView.setText(item);
+        textView.setTextColor(Color.BLACK);
 
         return textView;
     }
