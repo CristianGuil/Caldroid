@@ -168,7 +168,7 @@ public class CaldroidFragment extends DialogFragment {
     protected ArrayList<DateTime> selectedDates = new ArrayList<DateTime>();
     protected DateTime minDateTime;
     protected DateTime maxDateTime;
-    protected ArrayList<DateTime> dateInMonthsList;
+    public static ArrayList<DateTime> dateInMonthsList;
 
     /**
      * caldroidData belongs to Caldroid
@@ -212,7 +212,7 @@ public class CaldroidFragment extends DialogFragment {
      */
     protected boolean enableSwipe = true;
     protected boolean showNavigationArrows = true;
-    protected boolean enableClickOnDisabledDates = false;
+    public static boolean enableClickOnDisabledDates = false;
 
     /**
      * To use SquareTextView to display Date cell.By default, it is true,
@@ -235,7 +235,7 @@ public class CaldroidFragment extends DialogFragment {
      * caldroidListener inform library client of the event happens inside
      * Caldroid
      */
-    private CaldroidListener caldroidListener;
+    public static CaldroidListener caldroidListener;
 
     /**
      * Retrieve current month
@@ -1401,9 +1401,9 @@ public class CaldroidFragment extends DialogFragment {
             CaldroidGridAdapter adapter = datePagerAdapters.get(i);
             dateGridFragment.setGridViewRes(getGridViewRes());
             dateGridFragment.setGridAdapter(adapter);
-            dateGridFragment.setOnItemClickListener(getDateItemClickListener());
-            dateGridFragment
-                    .setOnItemLongClickListener(getDateItemLongClickListener());
+//            dateGridFragment.setOnItemClickListener(getDateItemClickListener());
+//            dateGridFragment
+//                    .setOnItemLongClickListener(getDateItemLongClickListener());
         }
 
         // Setup InfinitePagerAdapter to wrap around MonthPagerAdapter

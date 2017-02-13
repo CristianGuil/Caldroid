@@ -33,6 +33,16 @@ public abstract class CaldroidListener {
         // Do nothing
     }
 
+    /**
+     * Inform client user has double clicked on a date
+     *
+     * @param date
+     * @param view
+     */
+    public void onDoubleClickDate(Date date, View view) {
+        // Do nothing
+    }
+
 
     /**
      * Inform client that calendar has changed month
