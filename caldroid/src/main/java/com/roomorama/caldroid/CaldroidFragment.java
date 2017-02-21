@@ -44,7 +44,6 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
-import me.kaelaela.verticalviewpager.transforms.DefaultTransformer;
 
 /**
  * Caldroid is a fragment that display calendar with dates in a month. Caldroid
@@ -1484,7 +1483,6 @@ public class CaldroidFragment extends DialogFragment {
 
         // Use the infinitePagerAdapter to provide data for dateViewPager
         dateViewPager.setAdapter(infinitePagerAdapter);
-        dateViewPager.setPageTransformer(false, new DefaultTransformer());
 
         // Setup pageChangeListener
         dateViewPager.setOnPageChangeListener(pageChangeListener);
