@@ -44,6 +44,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
+import me.kaelaela.verticalviewpager.transforms.DefaultTransformer;
 
 /**
  * Caldroid is a fragment that display calendar with dates in a month. Caldroid
@@ -950,12 +951,6 @@ public class CaldroidFragment extends DialogFragment {
         this.caldroidListener = caldroidListener;
     }
 
-    /**
-     * Callback to listener when date is valid (not disable, not outside of
-     * min/max date)
-     *
-     * @return
-     */
     public OnItemClickListener getDateItemClickListener() {
         if (dateItemClickListener == null) {
             dateItemClickListener = new OnItemClickListener() {
@@ -1026,6 +1021,83 @@ public class CaldroidFragment extends DialogFragment {
 
         return dateItemLongClickListener;
     }
+
+    /**
+     * Callback to listener when date is valid (not disable, not outside of
+     * min/max date)
+     *
+     * @return
+     */
+//    public OnItemClickListener getDateItemClickListener() {
+//        if (dateItemClickListener == null) {
+//            dateItemClickListener = new OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view,
+//                                        int position, long id) {
+//
+//                    DateTime dateTime = dateInMonthsList.get(position);
+//
+//                    if (caldroidListener != null) {
+//                        if (!enableClickOnDisabledDates) {
+//                            if ((minDateTime != null && dateTime
+//                                    .lt(minDateTime))
+//                                    || (maxDateTime != null && dateTime
+//                                    .gt(maxDateTime))
+//                                    || (disableDates != null && disableDates
+//                                    .indexOf(dateTime) != -1)) {
+//                                return;
+//                            }
+//                        }
+//
+//                        Date date = CalendarHelper
+//                                .convertDateTimeToDate(dateTime);
+//                        caldroidListener.onSelectDate(date, view);
+//                    }
+//                }
+//            };
+//        }
+//
+//        return dateItemClickListener;
+//    }
+
+    /**
+     * Callback to listener when date is valid (not disable, not outside of
+     * min/max date)
+     *
+     * @return
+     */
+//    public OnItemLongClickListener getDateItemLongClickListener() {
+//        if (dateItemLongClickListener == null) {
+//            dateItemLongClickListener = new OnItemLongClickListener() {
+//                @Override
+//                public boolean onItemLongClick(AdapterView<?> parent,
+//                                               View view, int position, long id) {
+//
+//                    DateTime dateTime = dateInMonthsList.get(position);
+//
+//                    if (caldroidListener != null) {
+//                        if (!enableClickOnDisabledDates) {
+//                            if ((minDateTime != null && dateTime
+//                                    .lt(minDateTime))
+//                                    || (maxDateTime != null && dateTime
+//                                    .gt(maxDateTime))
+//                                    || (disableDates != null && disableDates
+//                                    .indexOf(dateTime) != -1)) {
+//                                return false;
+//                            }
+//                        }
+//                        Date date = CalendarHelper
+//                                .convertDateTimeToDate(dateTime);
+//                        caldroidListener.onLongClickDate(date, view);
+//                    }
+//
+//                    return true;
+//                }
+//            };
+//        }
+//
+//        return dateItemLongClickListener;
+//    }
 
     /**
      * Refresh month title text view when user swipe
@@ -1401,9 +1473,9 @@ public class CaldroidFragment extends DialogFragment {
             CaldroidGridAdapter adapter = datePagerAdapters.get(i);
             dateGridFragment.setGridViewRes(getGridViewRes());
             dateGridFragment.setGridAdapter(adapter);
-//            dateGridFragment.setOnItemClickListener(getDateItemClickListener());
-//            dateGridFragment
-//                    .setOnItemLongClickListener(getDateItemLongClickListener());
+            dateGridFragment.setOnItemClickListener(getDateItemClickListener());
+            dateGridFragment
+                    .setOnItemLongClickListener(getDateItemLongClickListener());
         }
 
         // Setup InfinitePagerAdapter to wrap around MonthPagerAdapter
@@ -1412,6 +1484,7 @@ public class CaldroidFragment extends DialogFragment {
 
         // Use the infinitePagerAdapter to provide data for dateViewPager
         dateViewPager.setAdapter(infinitePagerAdapter);
+        dateViewPager.setPageTransformer(false, new DefaultTransformer());
 
         // Setup pageChangeListener
         dateViewPager.setOnPageChangeListener(pageChangeListener);

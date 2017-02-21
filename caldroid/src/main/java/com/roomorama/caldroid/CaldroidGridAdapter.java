@@ -363,7 +363,7 @@ public class CaldroidGridAdapter extends BaseAdapter{
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final CellView cellView;
-        gestureDetector = new GestureDetector(context, new GestureListener());
+//        gestureDetector = new GestureDetector(context, new GestureListener());
 
 		// For reuse
 		if (convertView == null) {
@@ -375,58 +375,58 @@ public class CaldroidGridAdapter extends BaseAdapter{
 
 		customizeTextView(position, cellView);
 
-        cellView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                DateTime dateTime = CaldroidFragment.dateInMonthsList.get(position);
-
-                if (caldroidListener != null) {
-                    if (!enableClickOnDisabledDates) {
-                        if ((minDateTime != null && dateTime
-                                .lt(minDateTime))
-                                || (maxDateTime != null && dateTime
-                                .gt(maxDateTime))
-                                || (disableDates != null && disableDates
-                                .indexOf(dateTime) != -1)) {
-                            return gestureDetector.onTouchEvent(event);
-                        }
-                    }
-
-                    Date date = CalendarHelper
-                            .convertDateTimeToDate(dateTime);
-
-                    CaldroidGridAdapter.this.date = date;
-                    CaldroidGridAdapter.this.view = cellView;
-                }
-                return gestureDetector.onTouchEvent(event);
-            }
-        });
+//        cellView.setOnTouchListener(new View.OnTouchListener() {
+//
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                DateTime dateTime = CaldroidFragment.dateInMonthsList.get(position);
+//
+//                if (caldroidListener != null) {
+//                    if (!enableClickOnDisabledDates) {
+//                        if ((minDateTime != null && dateTime
+//                                .lt(minDateTime))
+//                                || (maxDateTime != null && dateTime
+//                                .gt(maxDateTime))
+//                                || (disableDates != null && disableDates
+//                                .indexOf(dateTime) != -1)) {
+//                            return gestureDetector.onTouchEvent(event);
+//                        }
+//                    }
+//
+//                    Date date = CalendarHelper
+//                            .convertDateTimeToDate(dateTime);
+//
+//                    CaldroidGridAdapter.this.date = date;
+//                    CaldroidGridAdapter.this.view = cellView;
+//                }
+//                return gestureDetector.onTouchEvent(event);
+//            }
+//        });
 
 		return cellView;
 	}
 
-    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            return true;
-        }
-
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            caldroidListener.onSelectDate(date, view);
-            return true;
-        }
-
-        // event when double tap occurs
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            float x = e.getX();
-            float y = e.getY();
-
-            caldroidListener.onDoubleClickDate(date, view);
-            return true;
-        }
-    }
+//    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+//
+//        @Override
+//        public boolean onDown(MotionEvent e) {
+//            return true;
+//        }
+//
+//        @Override
+//        public boolean onSingleTapConfirmed(MotionEvent e) {
+//            caldroidListener.onSelectDate(date, view);
+//            return true;
+//        }
+//
+//        // event when double tap occurs
+//        @Override
+//        public boolean onDoubleTap(MotionEvent e) {
+//            float x = e.getX();
+//            float y = e.getY();
+//
+//            caldroidListener.onDoubleClickDate(date, view);
+//            return true;
+//        }
+//    }
 }

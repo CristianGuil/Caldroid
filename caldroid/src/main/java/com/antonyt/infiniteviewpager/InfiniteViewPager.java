@@ -10,13 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 
 import hirondelle.date4j.DateTime;
+import me.kaelaela.verticalviewpager.VerticalViewPager;
 
 /**
  * A {@link ViewPager} that allows pseudo-infinite paging with a wrap-around
  * effect. Should be used with an {@link InfinitePagerAdapter}.
  * 
  */
-public class InfiniteViewPager extends ViewPager {
+public class InfiniteViewPager extends VerticalViewPager {
 
 	// ******* Declaration *********
 	public static final int OFFSET = 1000;
@@ -149,5 +150,6 @@ public class InfiniteViewPager extends ViewPager {
 
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
+
 
 }
