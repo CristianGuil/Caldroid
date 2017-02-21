@@ -35,10 +35,8 @@ import static com.roomorama.caldroid.CaldroidFragment.enableClickOnDisabledDates
  *
  * @author thomasdao
  */
-public class CaldroidGridAdapter extends BaseAdapter{
+public class CaldroidGridAdapter extends BaseAdapter {
     protected ArrayList<DateTime> datetimeList;
-    private Date date;
-    private View view;
     protected int month;
     protected int year;
     protected Context context;
@@ -62,8 +60,6 @@ public class CaldroidGridAdapter extends BaseAdapter{
     protected int defaultCellBackgroundRes = -1;
     protected ColorStateList defaultTextColorRes;
 
-    private GestureDetector gestureDetector;
-
     /**
      * caldroidData belongs to Caldroid
      */
@@ -73,7 +69,7 @@ public class CaldroidGridAdapter extends BaseAdapter{
      */
     protected Map<String, Object> extraData;
 
-	protected LayoutInflater localInflater;
+    protected LayoutInflater localInflater;
 
     public void setAdapterDateTime(DateTime dateTime) {
         this.month = dateTime.getMonth();
@@ -165,9 +161,9 @@ public class CaldroidGridAdapter extends BaseAdapter{
         // Get data from caldroidData
         populateFromCaldroidData();
 
-	    LayoutInflater inflater = (LayoutInflater) context
-			    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    localInflater = CaldroidFragment.getThemeInflater(context, inflater, themeResource);
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        localInflater = CaldroidFragment.getThemeInflater(context, inflater, themeResource);
     }
 
     /**
@@ -360,73 +356,21 @@ public class CaldroidGridAdapter extends BaseAdapter{
         return 0;
     }
 
-	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		final CellView cellView;
-//        gestureDetector = new GestureDetector(context, new GestureListener());
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        CellView cellView;
 
-		// For reuse
-		if (convertView == null) {
-			final int squareDateCellResource = squareTextViewCell ? R.layout.square_date_cell : R.layout.normal_date_cell;
-			cellView = (CellView) localInflater.inflate(squareDateCellResource, parent, false);
-		} else {
-			cellView = (CellView) convertView;
-		}
+        // For reuse
+        if (convertView == null) {
+            final int squareDateCellResource = squareTextViewCell ? R.layout.square_date_cell : R.layout.normal_date_cell;
+            cellView = (CellView) localInflater.inflate(squareDateCellResource, parent, false);
+        } else {
+            cellView = (CellView) convertView;
+        }
 
-		customizeTextView(position, cellView);
+        customizeTextView(position, cellView);
 
-//        cellView.setOnTouchListener(new View.OnTouchListener() {
-//
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                DateTime dateTime = CaldroidFragment.dateInMonthsList.get(position);
-//
-//                if (caldroidListener != null) {
-//                    if (!enableClickOnDisabledDates) {
-//                        if ((minDateTime != null && dateTime
-//                                .lt(minDateTime))
-//                                || (maxDateTime != null && dateTime
-//                                .gt(maxDateTime))
-//                                || (disableDates != null && disableDates
-//                                .indexOf(dateTime) != -1)) {
-//                            return gestureDetector.onTouchEvent(event);
-//                        }
-//                    }
-//
-//                    Date date = CalendarHelper
-//                            .convertDateTimeToDate(dateTime);
-//
-//                    CaldroidGridAdapter.this.date = date;
-//                    CaldroidGridAdapter.this.view = cellView;
-//                }
-//                return gestureDetector.onTouchEvent(event);
-//            }
-//        });
+        return cellView;
+    }
 
-		return cellView;
-	}
-
-//    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-//
-//        @Override
-//        public boolean onDown(MotionEvent e) {
-//            return true;
-//        }
-//
-//        @Override
-//        public boolean onSingleTapConfirmed(MotionEvent e) {
-//            caldroidListener.onSelectDate(date, view);
-//            return true;
-//        }
-//
-//        // event when double tap occurs
-//        @Override
-//        public boolean onDoubleTap(MotionEvent e) {
-//            float x = e.getX();
-//            float y = e.getY();
-//
-//            caldroidListener.onDoubleClickDate(date, view);
-//            return true;
-//        }
-//    }
 }
