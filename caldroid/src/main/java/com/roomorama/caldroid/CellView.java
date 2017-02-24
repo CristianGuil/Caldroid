@@ -35,8 +35,6 @@ public class CellView extends TextView {
     }
 
     private void init() {
-        Typeface type = Typeface.createFromAsset(getContext().getAssets(), getContext().getResources().getString(R.string.font_cooperhewitt_book));
-        setTypeface(type);
         if (null == customStates) customStates = new ArrayList<Integer>();
     }
 
