@@ -35,9 +35,9 @@ public class CellView extends TextView {
     }
 
     private void init() {
-        if (null == customStates) customStates = new ArrayList<Integer>();
         Typeface type = Typeface.createFromAsset(getContext().getAssets(), getContext().getResources().getString(R.string.font_cooperhewitt_book));
         setTypeface(type);
+        if (null == customStates) customStates = new ArrayList<Integer>();
     }
 
     public void resetCustomStates() {
