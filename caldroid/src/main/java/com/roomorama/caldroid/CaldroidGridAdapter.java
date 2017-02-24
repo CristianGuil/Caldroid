@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -26,9 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import hirondelle.date4j.DateTime;
-
-import static com.roomorama.caldroid.CaldroidFragment.caldroidListener;
-import static com.roomorama.caldroid.CaldroidFragment.enableClickOnDisabledDates;
 
 /**
  * The CaldroidGridAdapter provides customized view for the dates gridview
@@ -330,6 +328,10 @@ public class CaldroidGridAdapter extends BaseAdapter {
 
         // Set text
         cellView.setText(String.valueOf(dateTime.getDay()));
+
+        // Set TypeFace
+        Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
+        cellView.setTypeface(typeFace);
 
         // Set custom color if required
         setCustomResources(dateTime, cellView, cellView);
