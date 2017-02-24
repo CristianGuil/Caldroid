@@ -271,6 +271,10 @@ public class CaldroidGridAdapter extends BaseAdapter {
             if (textColorResource != null) {
                 textView.setTextColor(resources.getColor(textColorResource));
             }
+
+            // Set TypeFace
+            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
+            textView.setTypeface(typeFace);
         }
     }
 
@@ -366,8 +370,12 @@ public class CaldroidGridAdapter extends BaseAdapter {
         if (convertView == null) {
             final int squareDateCellResource = squareTextViewCell ? R.layout.square_date_cell : R.layout.normal_date_cell;
             cellView = (CellView) localInflater.inflate(squareDateCellResource, parent, false);
+            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
+            cellView.setTypeface(typeFace);
         } else {
             cellView = (CellView) convertView;
+            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
+            cellView.setTypeface(typeFace);
         }
 
         customizeTextView(position, cellView);
