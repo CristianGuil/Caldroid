@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -271,10 +270,6 @@ public class CaldroidGridAdapter extends BaseAdapter {
             if (textColorResource != null) {
                 textView.setTextColor(resources.getColor(textColorResource));
             }
-
-            // Set TypeFace
-            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
-            textView.setTypeface(typeFace);
         }
     }
 
@@ -333,10 +328,6 @@ public class CaldroidGridAdapter extends BaseAdapter {
         // Set text
         cellView.setText(String.valueOf(dateTime.getDay()));
 
-        // Set TypeFace
-        Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
-        cellView.setTypeface(typeFace);
-
         // Set custom color if required
         setCustomResources(dateTime, cellView, cellView);
 
@@ -370,12 +361,8 @@ public class CaldroidGridAdapter extends BaseAdapter {
         if (convertView == null) {
             final int squareDateCellResource = squareTextViewCell ? R.layout.square_date_cell : R.layout.normal_date_cell;
             cellView = (CellView) localInflater.inflate(squareDateCellResource, parent, false);
-            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
-            cellView.setTypeface(typeFace);
         } else {
             cellView = (CellView) convertView;
-            Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_cooperhewitt_bold));
-            cellView.setTypeface(typeFace);
         }
 
         customizeTextView(position, cellView);
