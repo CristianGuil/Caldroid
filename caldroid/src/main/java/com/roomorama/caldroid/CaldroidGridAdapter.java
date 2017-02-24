@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -361,8 +362,12 @@ public class CaldroidGridAdapter extends BaseAdapter {
         if (convertView == null) {
             final int squareDateCellResource = squareTextViewCell ? R.layout.square_date_cell : R.layout.normal_date_cell;
             cellView = (CellView) localInflater.inflate(squareDateCellResource, parent, false);
+            Typeface type = Typeface.createFromAsset(cellView.getContext().getAssets(), cellView.getContext().getResources().getString(R.string.font_cooperhewitt_book));
+            cellView.setTypeface(type);
         } else {
             cellView = (CellView) convertView;
+            Typeface type = Typeface.createFromAsset(cellView.getContext().getAssets(), cellView.getContext().getResources().getString(R.string.font_cooperhewitt_book));
+            cellView.setTypeface(type);
         }
 
         customizeTextView(position, cellView);
