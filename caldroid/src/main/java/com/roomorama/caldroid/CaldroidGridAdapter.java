@@ -366,8 +366,8 @@ public class CaldroidGridAdapter extends BaseAdapter {
             cellView.setTypeface(type);
         } else {
             cellView = (CellView) convertView;
-            Typeface type = Typeface.createFromAsset(cellView.getContext().getAssets(), cellView.getContext().getResources().getString(R.string.font_cooperhewitt_book));
-            cellView.setTypeface(type);
+//            Typeface type = Typeface.createFromAsset(cellView.getContext().getAssets(), cellView.getContext().getResources().getString(R.string.font_cooperhewitt_book));
+//            cellView.setTypeface(type);
         }
 
         customizeTextView(position, cellView);
